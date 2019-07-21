@@ -1,0 +1,45 @@
+$titleH: 44px;
+
+$itemHeight: 36px;
+$viewCount:5;
+
+$springH: $itemHeight * $viewCount;
+// 选择器margin
+$springMarginH: ($itemHeight/2);
+// 选择器外框高度 = 选择器高度 + 上下margin
+$springWrapH: #{$springH + $springMarginH + $springMarginH };
+.ui-popup-title {
+  position: relative;
+  height: $titleH;
+  font-size: 17px;
+  background: #fff;
+  padding: 0 10px;
+  line-height: $titleH;
+  display: flex;
+  justify-content: space-between;
+
+  > span {
+    display: inline-block;
+    color: #007aff;
+  }
+}
+
+.ui-popup-content {
+  height: $springWrapH;
+  width: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling : touch;
+  display: flex;
+}
+
+.onepx-bottom-border:after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 1px;
+    background: #e0d0d0;
+    transform: scaleY(0.5);
+    box-sizing: border-box;
+}

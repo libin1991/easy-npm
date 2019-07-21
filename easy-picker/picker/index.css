@@ -1,0 +1,52 @@
+.ui-picker-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  pointer-events: auto;
+  margin-top: 18px;
+  touch-action: none;
+}
+
+.ui-picker-wrapper .ui-picker {
+  width: 100%;
+  transition: transform .3s ease-out;
+}
+
+.ui-picker-wrapper .ui-picker-item {
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #000;
+  font-size: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: relative;
+  transition: transform-origin,transform .3s ease-out;
+}
+
+.ui-picker-wrapper .ui-picker-deco {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  z-index: 100;
+  background: linear-gradient(to bottom, white 10.5%, rgba(255, 255, 255, 0.68) 12%, rgba(255, 255, 255, 0.45) 37%, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, 0.45) 63%, rgba(255, 255, 255, 0.68) 88%, white 89.5%);
+  pointer-events: none;
+}
+
+.ui-picker-wrapper .ui-picker-center {
+  height: 36px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  z-index: 101;
+  margin-top: -18px;
+  pointer-events: none;
+  border-top: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+}
