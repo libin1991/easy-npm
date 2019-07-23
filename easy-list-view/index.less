@@ -1,0 +1,88 @@
+.list-view {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 100%;
+}
+
+.list-view .list-view--refresh {
+    display: flex;
+    height: 180px;
+    margin-top: -180px;
+    line-height: 180px;
+    text-align: center;
+    color: #999;
+
+    align-items: center;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.list-view .list-view--infinite {
+    display: flex;
+    height: 180px;
+    font-size: 38px;
+    line-height: 180px;
+    text-align: center;
+    color: #999;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.list-view .list-view--inner .refresh-arrow {
+    width: 50px;
+    height: 50px;
+    transition: transform .2s linear;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.list-view .refresh-spinner {
+    width: 80px;
+    height: 80px;
+}
+
+.list-view .list-view--inner .refresh-text {
+    display: block;
+    margin: 0 auto;
+    font-size: 38px;
+    line-height: 60px;
+    color: #aaa;
+}
+.list-view .list-view--infinite .infinite-nodata{
+   font-size: 42px;
+}
+.list-view .list-view--refresh .refresh-text:before {
+    content: attr(data-pulldown);
+}
+
+.list-view .list-view--inner.active .list-view--refresh .refresh-text:before {
+    content: attr(data-refresh);
+}
+
+.list-view .list-view--inner.active .list-view--refresh .refresh-arrow {
+    transform: translate3d(0, 0, 0) rotate(180deg);
+}
+
+.list-view .list-view--inner.active .list-view--refresh {
+    color: #39f;
+}
+
+.list-view .list-view--inner.loading .list-view--refresh .refresh-text:before {
+    content: attr(data-loading);
+}
+
+.list-view .list-view--inner.loading .list-view--icon {
+    display: none;
+}
+
+.list-view .list-view--inner.loading .list-view--spinner {
+    display: inline-block;
+}
+
+.list-view .list-view--loading {
+    height: 180px;
+    line-height: 180px;
+    text-align: center;
+    color: #999;
+}
