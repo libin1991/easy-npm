@@ -28,7 +28,7 @@ export class ListView extends React.Component<Props, State> {
         refreshText: '释放更新',
         loadingText: '数据加载中...',
         endText: '没有更多数据了',
-        scrollbtn: 10
+        scrollbtn: 50
     };
 
     static $el = null;
@@ -64,10 +64,11 @@ export class ListView extends React.Component<Props, State> {
         ListView.$el = this.$el;
 
         let timer: number | null = null;
-        let beforeScrollTop = this.$el.scrollTop;
-        this.props.onInfinite && this.$el.addEventListener('scroll', (e: Event) => {
+        let beforeScrollTop = this.getScrollTop();
 
-            const afterScrollTop: any = this.$el.scrollTop;
+        this.props.onInfinite && window.addEventListener('scroll', (e: Event) => {
+
+            const afterScrollTop: number = this.getScrollTop();
             const delta: number = afterScrollTop - beforeScrollTop;
             this.props.onScroll && this.props.onScroll(e, delta > 0 ? 'down' : 'up');
             beforeScrollTop = afterScrollTop;
@@ -75,7 +76,7 @@ export class ListView extends React.Component<Props, State> {
             timer && clearTimeout(timer);
             timer = window.setTimeout(() => {
                 this.handleScroll();
-            }, 200);
+            }, 100);
         });
 
         if (this.props.onRefresh) {
@@ -94,7 +95,7 @@ export class ListView extends React.Component<Props, State> {
         this.touch = {
             pageY: 0,
             pageX: 0,
-            inner: this.$el.querySelector('.list-view--inner'),
+            inner: this.$el.querySelector('.hk-list-view-inner'),
             markHeight: 0
         };
     }
@@ -114,6 +115,7 @@ export class ListView extends React.Component<Props, State> {
     }
 
     handleTouchStart(e: TouchEvent | MouseEvent | any) {
+        if (this.getScrollTop() !== 0) return;
         if (!this.touch.pageY && this.$el.scrollTop === 0) {
             const {
                 pageX,
@@ -121,7 +123,7 @@ export class ListView extends React.Component<Props, State> {
             } = this.getPosition(e);
             this.touch.pageY = pageY;
             this.touch.pageX = pageX;
-            this.touch.markHeight = this.$el.querySelector('.list-view--refresh').offsetHeight;
+            this.touch.markHeight = this.$el.querySelector('.hk-list-view-refresh').offsetHeight;
             this.setState({
                 status: 0
             });
@@ -129,6 +131,7 @@ export class ListView extends React.Component<Props, State> {
 
     }
     handleTouchMove(e: TouchEvent | MouseEvent | any) {
+        if (this.getScrollTop() !== 0) return;
         const {
             pageY,
             pageX
@@ -156,6 +159,7 @@ export class ListView extends React.Component<Props, State> {
         }
     }
     handleTouchEnd(e: TouchEvent | MouseEvent | any) {
+        if (this.getScrollTop() !== 0) return;
         const {
             pageY
         } = this.getPosition(e);
@@ -187,9 +191,35 @@ export class ListView extends React.Component<Props, State> {
         }
         this.touch.pageY = 0;
     }
+    getScrollTop() {
+        return document.documentElement.scrollTop || document.body.scrollTop;
+    }
+
+    getWinHeight() {
+        return document.documentElement.clientHeight || document.body.clientHeight;
+    }
+
+    getScrollHeight() {
+        let bodyScrollHeight = 0;
+        let documentScrollHeight = 0;
+        if (document.body) {
+            bodyScrollHeight = document.body.scrollHeight;
+        }
+        if (document.documentElement) {
+            documentScrollHeight = document.documentElement.scrollHeight;
+        }
+        return (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+
+    }
+    isReachBottom() {
+        const scrollTop = this.getScrollTop(); // 获取滚动条的高度
+        const winHeight = this.getWinHeight(); // 一屏的高度
+        const scrollHeight = this.getScrollHeight(); // 获取文档总高度
+        return scrollTop >= scrollHeight - winHeight - 50;  // 判断是否到底部,50是兼容iphoneX底部白条bug
+    }
 
     handleScroll() {
-        if (this.$el.scrollHeight - this.height - this.$el.scrollTop <= (this.props.scrollbtn || 0)) {
+        if (this.isReachBottom()) {
             this.props.onInfinite && this.props.onInfinite(this.hasData);
         }
     }
@@ -207,7 +237,6 @@ export class ListView extends React.Component<Props, State> {
             loadstate: [0, 1, 2][flag]  //  0 转圈  1 text  2.隐藏
         });
     }
-
 
     componentWillUnmount() {
         this.touch = null;
@@ -234,19 +263,19 @@ export class ListView extends React.Component<Props, State> {
         } = this.state;
 
         return (
-            <div ref={this.$ref} className='list-view'>
-                <div className='list-view--inner'>
-                    {onRefresh && <div className='list-view--refresh'>
-                        {status !== 1 && <img className='refresh-arrow' src={arrow} />}
-                        {status !== 1 && <span className='refresh-text' data-loading={loadingText} data-pulldown={pullDownText} data-refresh={refreshText}></span>}
-                        {status === 1 && <img className='refresh-spinner' src={spinner} />}
+            <div ref={this.$ref} className='hk-list--view'>
+                <div className='hk-list-view-inner'>
+                    {onRefresh && <div className='hk-list-view-refresh'>
+                        {status !== 1 && <img className='hk-refresh-arrow' src={arrow} />}
+                        {status !== 1 && <span className='hk-refresh-text' data-loading={loadingText} data-pulldown={pullDownText} data-refresh={refreshText}></span>}
+                        {status === 1 && <img className='hk-refresh-spinner' src={spinner} />}
                     </div>}
 
                     {children}
 
-                    {onInfinite && (loadstate !== 2) && <div className='list-view--infinite'>
-                        {loadstate === 0 && <img className='refresh-spinner' src={spinner} />}
-                        {loadstate === 1 && <div className='infinite-nodata'>{endText}</div>}
+                    {onInfinite && (loadstate !== 2) && <div className='hk-list-view-infinite'>
+                        {loadstate === 0 && <img className='hk-refresh-spinner' src={spinner} />}
+                        {loadstate === 1 && <div className='hk-infinite-nodata'>{endText}</div>}
                     </div>}
                 </div>
             </div>
