@@ -20,7 +20,6 @@ npm config get registry
 
 npm config get disturl  
 ```
-
 ### 使用nrm管理registry地址
 安装nrm
 ```
@@ -34,7 +33,6 @@ nrm ls
 ```
 nrm use taobao
 ```
-
 ### 提交正式版本
 ```
 npm publish
@@ -43,7 +41,6 @@ npm publish
 ```
 npm install @packageName
 ```
-
 ### 测试包发布
 
 > 在测试版本中 的package.json我们修改成 "version": "1.0.0-beta",
