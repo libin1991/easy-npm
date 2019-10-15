@@ -5,7 +5,7 @@ interface Option {
     opacity?: number
     title?: string
     warpClass?: string
-    content?: string
+    content?: any
     animation?: string   /* fade zoom slideDown slideLeft slideRight slideUp flip rotate door*/
     btnSuccText?: string
     onSucc?(event: any): any | Promise<any>
@@ -60,6 +60,14 @@ export class DialogCom extends React.Component<Props, {}> {
             context.hide();
         }
     }
+    onMask = (e) => {
+        e.stopPropagation();
+        const {
+            maskHide,
+        } = this.props.setting;
+        const { context } = this.props;
+        maskHide && context.hide();
+    }
     render() {
         const {
             opacity,
@@ -67,23 +75,19 @@ export class DialogCom extends React.Component<Props, {}> {
             content,
             btnSuccText,
             btnFailText,
-            maskHide,
             animation,
             warpClass
         } = this.props.setting;
-        const { context } = this.props;
         const style = {
             'background': `rgba(0,0,0,${opacity})`
         };
+        const Content = typeof content == 'function' ? content : null;
         return (
-            <div className='hk-mask' ref={(el) => { this.mask = el; }} onClick={(e) => {
-                e.stopPropagation();
-                maskHide && context.hide();
-            }} style={style}>
+            <div className='hk-mask' ref={(el) => { this.mask = el; }} onClick={this.onMask} style={style}>
                 <Transition animation={animation}>
                     <div className={`hk-dialog ${warpClass}`}>
                         {title && <div className='hk-title1'>{title}</div>}
-                        <p className='hk-title1 hk-title2'>{content}</p>
+                        {typeof Content == 'function' ? <Content></Content> : <p className='hk-title1 hk-title2'>{content}</p>}
                         <div className='hk-btnlist onepx-top-border'>
                             {btnFailText && <div className='hk-abort' onClick={this.onCancel}>{btnFailText}</div>}
                             <div className='hk-ok onepx-left-border' onClick={this.onSucc}>{btnSuccText}</div>

@@ -5,7 +5,7 @@ interface Option {
     opacity?: number
     title?: string
     warpClass?: string
-    content?: string
+    content?: any
     animation?: string   /* fade zoom slideDown slideLeft slideRight slideUp flip rotate door*/
     btnSuccText?: string
     onSucc?(event: any): any | Promise<any>
