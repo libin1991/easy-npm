@@ -34,3 +34,33 @@ nrm ls
 ```
 nrm use taobao
 ```
+
+### 提交正式版本
+```
+npm publish
+```
+下载正式版本
+```
+npm install @packageName
+```
+
+### 测试包发布
+
+> 在测试版本中 的package.json我们修改成 "version": "1.0.0-beta",
+
+提交测试版:
+```
+npm publish --tag=beta
+```
+安装测试版
+```
+npm install @fz/components@beta
+```
+查看
+```
+npm view
+
+或者
+
+npm info @packageName 查看信息
+```
