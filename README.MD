@@ -54,13 +54,13 @@ npm publish --tag=beta
 ```
 安装测试版
 ```
-npm install @fz/components@beta
+npm install @baidu/packageName@beta
 ```
-查看
+查看包信息
 ```
 npm view
 
 或者
 
-npm info @packageName 查看信息
+npm info @baidu/packageName 
 ```
