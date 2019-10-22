@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>hello service worker</h1>
+    <script>
+      // 1. 需要在网页加载完成的时候，注册service worker
+      window.addEventListener('load', () => {
+        // 2. 能力检测
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker
+            .register('./sw.js')
+            .then(registration => {
+              console.log(registration)
+            })
+            .catch(err => {
+              console.log(err)
+            })
+        }
+      })
+    </script>
+  </body>
+</html>
