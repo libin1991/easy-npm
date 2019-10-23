@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      console.log('start')
 
-      // 1. 创建一个web worker
-      const worker = new Worker('work.js')
-      worker.addEventListener('message', e => {
-        console.log(e.data)
-      })
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
 
-      console.log('end')
-    </script>
-  </body>
+<body>
+  <script>
+    console.log('start')
+
+    // 1. 创建一个web worker
+    const worker = new Worker('./work.js')
+    worker.addEventListener('message', e => {
+      console.log(e.data)
+    })
+
+    console.log('end')
+  </script>
+</body>
+
 </html>
