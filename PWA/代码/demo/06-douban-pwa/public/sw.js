@@ -1,11 +1,12 @@
-const CACHE_NAME = 'cache_v1'
+const CACHE_NAME = 'cache_v190';
 const URLS = [
   '/',
   '/css/index.css',
   '/images/logo.png',
   '/index.js',
   '/manifest.json',
-  '/api/getMovie'
+  '/api/getMovie',
+  'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'
 ]
 self.addEventListener('install', async e => {
   // 缓存内容
@@ -15,7 +16,10 @@ self.addEventListener('install', async e => {
 })
 self.addEventListener('activate', async e => {
   // 清除旧的缓存
-  const keys = await caches.keys()
+  const keys = await caches.keys();
+
+  console.log(keys);
+
   keys.forEach(key => {
     // 如果key不等于CACHE_NAME
     if (key !== CACHE_NAME) {

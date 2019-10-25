@@ -21,6 +21,8 @@ async function renderMovie() {
 
 async function registerSW() {
   window.addEventListener('load', () => {
+    console.log(123);
+    console.dir($('body')[0]);
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js')
     }
@@ -44,5 +46,5 @@ if (!navigator.onLine) {
 window.addEventListener('online', () => {
   new Notification('提示', {
     body: '你已经连上网络了，请刷新访问最新的数据'
-  })
+  });
 })
