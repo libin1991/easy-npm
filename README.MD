@@ -27,7 +27,8 @@ npm config get registry
 
 npm config get disturl  
 ```
-### 使用nrm管理registry地址
+
+### 使用**nrm**管理registry地址
 安装nrm
 ```
 npm install -g nrm
@@ -40,6 +41,19 @@ nrm ls
 ```
 nrm use taobao
 ```
+增加
+```
+nrm add [name] http://registry.npm.frp.trmap.cn/
+```
+删除
+```
+nrm del <registry-name>
+```
+测试速度
+```
+nrm test npm                
+```
+
 ### 提交正式版本
 ```
 npm login
