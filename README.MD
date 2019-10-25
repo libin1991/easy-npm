@@ -11,6 +11,9 @@ prerelease: 预发布版本
 ```
 ### 将npm设置成淘宝镜像
 ```
+npm config set registry http://registry.npmjs.org
+
+
 npm config set registry https://registry.npm.taobao.org --global
 npm config set disturl https://npm.taobao.org/dist --global
 ```
