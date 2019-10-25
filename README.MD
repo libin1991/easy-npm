@@ -12,10 +12,14 @@ prerelease: 预发布版本
 ### 将npm设置成NPM镜像或者淘宝镜像
 ```
 npm config set registry http://registry.npmjs.org
-
+// 全局配置切换到官方源
+npm config set registry http://www.npmjs.org
 
 npm config set registry https://registry.npm.taobao.org --global
 npm config set disturl https://npm.taobao.org/dist --global
+
+// 检测是否切换到了淘宝源
+npm get registry
 ```
 ### 如何检测镜像是否设置成功呢？即查看镜像的配置结果
 ```
@@ -38,6 +42,7 @@ nrm use taobao
 ```
 ### 提交正式版本
 ```
+npm login
 npm publish
 ```
 下载正式版本
