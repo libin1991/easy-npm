@@ -9,7 +9,7 @@ patch: 修订号
 prepatch: 预备修订版
 prerelease: 预发布版本
 ```
-### 将npm设置成淘宝镜像
+### 将npm设置成NPM镜像或者淘宝镜像
 ```
 npm config set registry http://registry.npmjs.org
 
