@@ -1,6 +1,6 @@
 {
   "name": "v-console.js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "vconsole.min.js",
   "scripts": {
