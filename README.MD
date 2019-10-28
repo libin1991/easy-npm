@@ -63,6 +63,12 @@ npm publish
 ```
 npm install @packageName
 ```
+
+### 安装失败
+```
+sudo npm i --unsafe-perm
+```
+
 ### 测试包发布
 
 > 在测试版本中 的package.json我们修改成 "version": "1.0.0-beta",
