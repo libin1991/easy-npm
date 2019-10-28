@@ -67,6 +67,8 @@ npm install @packageName
 ### 安装失败
 ```
 sudo npm i --unsafe-perm
+
+npm install --unsafe-perm=true --allow-root
 ```
 
 ### 测试包发布
