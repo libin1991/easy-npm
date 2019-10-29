@@ -246,3 +246,25 @@ npm ls -g -depth 0
 npm outdate
 ```
 这个命令将会列出所有你可能有更新的过时的安装包列表.
+
+
+### npm设置代理
+```js
+npm config set proxy http://proxyhost:proxyport
+npm config set https-proxy http://proxyhost:proxyport
+```
+
+> If there is no proxy , remove proxy config from npm
+```
+npm config set proxy null
+npm config set https-proxy null
+```
+> npm 代理设置npmrc文件
+```
+registry=https://registry.npm.taobao.org/
+prefix=D:\Program Files\nodejs\node_global
+cache=D:\Program Files\nodejs\node_cache
+proxy=http://username:password@dl-proxy.neusoft.com:8080/
+https-proxy=http://username:password@dl-proxy.neusoft.com:8080/
+strict-ssl=false
+```
