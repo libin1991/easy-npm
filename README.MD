@@ -20,6 +20,12 @@ npm config set disturl https://npm.taobao.org/dist --global
 
 // 检测是否切换到了淘宝源
 npm get registry
+
+//npm取消淘宝镜像
+npm config delete registry
+
+//查看代理信息（当前配置）
+npm config list
 ```
 ### 如何检测镜像是否设置成功呢？即查看镜像的配置结果
 ```
@@ -252,6 +258,11 @@ npm outdate
 ```js
 npm config set proxy http://proxyhost:proxyport
 npm config set https-proxy http://proxyhost:proxyport
+```
+
+> 取消代理
+```
+npm config delete proxy   
 ```
 
 > If there is no proxy , remove proxy config from npm
