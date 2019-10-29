@@ -83,7 +83,7 @@ npm publish --tag=beta
 ```
 安装测试版
 ```
-npm install @baidu/packageName@beta
+npm install @公司/packageName@beta
 ```
 查看包信息,使用npm view xxx或npm v xxx可以查看包信息
 ```
@@ -91,7 +91,7 @@ npm view
 
 或者
 
-npm info @baidu/packageName 
+npm info @公司/packageName 
 ```
 
 
