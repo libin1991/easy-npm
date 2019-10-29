@@ -32,6 +32,8 @@ npm config get disturl
 安装nrm
 ```
 npm install -g nrm
+
+npm install --verbose  来替代npm install  可以查看显示当前进展到哪一步，很详细的信息 ,方便我们排错
 ```
 查看镜像列表
 ```
