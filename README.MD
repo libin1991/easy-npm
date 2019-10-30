@@ -98,6 +98,32 @@ npm view
 或者
 
 npm info @公司/packageName 
+
+$ npm info bootstrap versions
+
+[ '0.0.1',
+  '0.0.2',
+  '3.1.1',
+  '3.2.0',
+  '3.3.0',
+  '3.3.1',
+  '3.3.2',
+  '3.3.4',
+  '3.3.5',
+  '3.3.6',
+  '3.3.7',
+  '4.0.0-alpha.2',
+  '4.0.0-alpha.3',
+  '4.0.0-alpha.4',
+  '4.0.0-alpha.5',
+  '4.0.0-alpha.6',
+  '4.0.0-beta',
+  '4.0.0-beta.2',
+  '4.0.0-beta.3',
+  '4.0.0' ]
+$ npm install --save bootstrap@3.3.7
+
+
 ```
 
 
@@ -278,4 +304,14 @@ cache=D:\Program Files\nodejs\node_cache
 proxy=http://username:password@dl-proxy.neusoft.com:8080/
 https-proxy=http://username:password@dl-proxy.neusoft.com:8080/
 strict-ssl=false
+```
+
+
+
+### npm install -f解决一些难以解决的安装问题EPERM
+```
+npm ERR! path C:\Users\Administrator\devenvironment\Code\newkidsitfromscratch\resources\assets\js\vuecliwebpackv296_all\node_modules\fsevents\node_modules
+npm ERR! code EPERM
+npm ERR! errno -4048
+npm ERR! syscall scandir
 ```
