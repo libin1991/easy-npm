@@ -1,3 +1,6 @@
+### [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
+
+
 ### npm管理项目版本号
 在命令行窗口输入npm version ?可以查看可以使用的命令：
 ```
