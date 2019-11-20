@@ -1,3 +1,11 @@
+## BigPipe 是 Facebook 开发的优化网页加载速度的技术。网上几乎没有用 node.js 实现的文章，实际上，不止于 node.js，BigPipe 用其他语言的实现在网上都很少见。以至于这技术出现很久以后，我还以为就是整个网页的框架先发送完毕后，用另一个或几个 ajax 请求再请求页面内的模块。直到不久前，我才了解到原来 BigPipe 的核心概念就是只用一个 HTTP 请求，只是页面元素不按顺序发送而已。
+
+了解了这个核心概念就好办了，得益于 node.js 的异步特性，很容易就可以用 node.js 实现 BigPipe。本文会一步一步详尽地用例子来说明 BigPipe 技术的起因和一个基于 node.js 的简单实现。
+
+我会用 express 来演示，简单起见，我们选用 jade 作为模版引擎，并且我们不使用引擎的子模版（partial）特性，而是以子模版渲染完成以后的 HTML 作为父模版的数据。
+
+## [用 node.js 实现 BigPipe](https://github.com/libin1991/bigpipe-on-node/blob/061f4c4f1baad98951a77d70c1d3f3009becddf9/readme.md)
+
 ## nodejs-bigpipe-demo
 这是使用 **node.js+Express+BigPipe** 技术应用的**demo**。
    
