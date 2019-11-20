@@ -1,3 +1,6 @@
+### [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
+
+
 ### npm管理项目版本号
 在命令行窗口输入npm version ?可以查看可以使用的命令：
 ```
@@ -20,6 +23,12 @@ npm config set disturl https://npm.taobao.org/dist --global
 
 // 检测是否切换到了淘宝源
 npm get registry
+
+//npm取消淘宝镜像
+npm config delete registry
+
+//查看代理信息（当前配置）
+npm config list
 ```
 ### 如何检测镜像是否设置成功呢？即查看镜像的配置结果
 ```
@@ -32,6 +41,8 @@ npm config get disturl
 安装nrm
 ```
 npm install -g nrm
+
+npm install --verbose  来替代npm install  可以查看显示当前进展到哪一步，很详细的信息 ,方便我们排错
 ```
 查看镜像列表
 ```
@@ -63,6 +74,14 @@ npm publish
 ```
 npm install @packageName
 ```
+
+### 安装失败
+```
+sudo npm i --unsafe-perm
+
+npm install --unsafe-perm=true --allow-root
+```
+
 ### 测试包发布
 
 > 在测试版本中 的package.json我们修改成 "version": "1.0.0-beta",
@@ -73,7 +92,7 @@ npm publish --tag=beta
 ```
 安装测试版
 ```
-npm install @baidu/packageName@beta
+npm install @公司/packageName@beta
 ```
 查看包信息,使用npm view xxx或npm v xxx可以查看包信息
 ```
@@ -81,7 +100,33 @@ npm view
 
 或者
 
-npm info @baidu/packageName 
+npm info @公司/packageName 
+
+$ npm info bootstrap versions
+
+[ '0.0.1',
+  '0.0.2',
+  '3.1.1',
+  '3.2.0',
+  '3.3.0',
+  '3.3.1',
+  '3.3.2',
+  '3.3.4',
+  '3.3.5',
+  '3.3.6',
+  '3.3.7',
+  '4.0.0-alpha.2',
+  '4.0.0-alpha.3',
+  '4.0.0-alpha.4',
+  '4.0.0-alpha.5',
+  '4.0.0-alpha.6',
+  '4.0.0-beta',
+  '4.0.0-beta.2',
+  '4.0.0-beta.3',
+  '4.0.0' ]
+$ npm install --save bootstrap@3.3.7
+
+
 ```
 
 
@@ -236,3 +281,99 @@ npm ls -g -depth 0
 npm outdate
 ```
 这个命令将会列出所有你可能有更新的过时的安装包列表.
+
+
+### npm设置代理
+```js
+npm config set proxy http://proxyhost:proxyport
+npm config set https-proxy http://proxyhost:proxyport
+```
+
+> 取消代理
+```
+npm config delete proxy   
+```
+
+> If there is no proxy , remove proxy config from npm
+```
+npm config set proxy null
+npm config set https-proxy null
+```
+> npm 代理设置npmrc文件
+```
+registry=https://registry.npm.taobao.org/
+prefix=D:\Program Files\nodejs\node_global
+cache=D:\Program Files\nodejs\node_cache
+proxy=http://username:password@dl-proxy.neusoft.com:8080/
+https-proxy=http://username:password@dl-proxy.neusoft.com:8080/
+strict-ssl=false
+```
+
+
+
+### npm install -f解决一些难以解决的安装问题EPERM
+```
+npm ERR! path C:\Users\Administrator\devenvironment\Code\newkidsitfromscratch\resources\assets\js\vuecliwebpackv296_all\node_modules\fsevents\node_modules
+npm ERR! code EPERM
+npm ERR! errno -4048
+npm ERR! syscall scandir
+```
+
+
+### npm update常用命令使用
+```
+    更新
+　　npm-check检查更新
+　　　　　　npm install -g npm-check
+　　　　　　npm-check
+      
+    npm-upgrade更新
+　　　　　　npm install -g npm-upgrade
+　　　　　　npm-upgrade
+
+　　更新全局包：
+　　　　　　npm update <name> -g
+
+　　更新生产环境依赖包：
+　　　　　　npm update <name> --save
+
+　　更新开发环境依赖包：
+　　　　　　npm update <name> --save-dev
+      
+    npm run start 前更新
+           "poststart": "npm update a b c"
+```
+
+### 执行顺序(并行和串行)
+如果 npm 脚本里面需要执行多个任务，那么需要明确它们的执行顺序。
+
+如果是并行执行（即同时的平行执行），可以使用&符号。
+
+```
+$ npm run script1.js & npm run script2.js
+```
+如果是继发执行（即只有前一个任务成功，才执行下一个任务），可以使用&&符号。
+
+```
+$ npm run script1.js && npm run script2.js
+```
+这两个符号是 Bash 的功能。此外，还可以使用 node 的任务管理模块：script-runner、npm-run-all、redrun。
+
+### npm 脚本有pre和post两个钩子。
+
+举例来说，build脚本命令的钩子就是prebuild和postbuild。
+```
+"prebuild": "echo I run before the build script",
+"build": "cross-env NODE_ENV=production webpack",
+"postbuild": "echo I run after the build script"
+```
+用户执行npm run build的时候，会自动按照下面的顺序执行。
+```
+npm run prebuild && npm run build && npm run postbuild
+```
+因此，可以在这两个钩子里面，完成一些准备工作和清理工作。
+```
+"clean": "rimraf ./dist && mkdir dist",
+"prebuild": "npm run clean",
+"build": "cross-env NODE_ENV=production webpack"
+```
