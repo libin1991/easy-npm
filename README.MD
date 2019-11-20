@@ -318,3 +318,62 @@ npm ERR! code EPERM
 npm ERR! errno -4048
 npm ERR! syscall scandir
 ```
+
+
+### npm update常用命令使用
+```
+    更新
+　　npm-check检查更新
+　　　　　　npm install -g npm-check
+　　　　　　npm-check
+      
+    npm-upgrade更新
+　　　　　　npm install -g npm-upgrade
+　　　　　　npm-upgrade
+
+　　更新全局包：
+　　　　　　npm update <name> -g
+
+　　更新生产环境依赖包：
+　　　　　　npm update <name> --save
+
+　　更新开发环境依赖包：
+　　　　　　npm update <name> --save-dev
+      
+    npm run start 前更新
+           "poststart": "npm update a b c"
+```
+
+### 执行顺序(并行和串行)
+如果 npm 脚本里面需要执行多个任务，那么需要明确它们的执行顺序。
+
+如果是并行执行（即同时的平行执行），可以使用&符号。
+
+```
+$ npm run script1.js & npm run script2.js
+```
+如果是继发执行（即只有前一个任务成功，才执行下一个任务），可以使用&&符号。
+
+```
+$ npm run script1.js && npm run script2.js
+```
+这两个符号是 Bash 的功能。此外，还可以使用 node 的任务管理模块：script-runner、npm-run-all、redrun。
+
+### npm 脚本有pre和post两个钩子。
+
+举例来说，build脚本命令的钩子就是prebuild和postbuild。
+```
+"prebuild": "echo I run before the build script",
+"build": "cross-env NODE_ENV=production webpack",
+"postbuild": "echo I run after the build script"
+```
+用户执行npm run build的时候，会自动按照下面的顺序执行。
+```
+npm run prebuild && npm run build && npm run postbuild
+```
+因此，可以在这两个钩子里面，完成一些准备工作和清理工作。
+```
+"clean": "rimraf ./dist && mkdir dist",
+"prebuild": "npm run clean",
+"build": "cross-env NODE_ENV=production webpack"
+```
