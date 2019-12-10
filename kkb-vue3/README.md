@@ -1,4 +1,4 @@
-##  vue3剖析(蹭一下热度)
+ ##  vue3剖析(蹭一下热度)
 
 ##   Composition API RFC
 
@@ -553,6 +553,8 @@ function computed(fn) {
   }
 }
 ```
+![image](https://user-images.githubusercontent.com/16753554/70522863-e16af800-1b7c-11ea-9d99-f449da9b4a4c.png)
+
 ## 测试代码
 ```html
 <!DOCTYPE html>
