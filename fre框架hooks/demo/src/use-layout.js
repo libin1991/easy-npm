@@ -28,4 +28,4 @@ function A(props) {
   return 'hello'
 }
 
-render(<App />, document.body)
+render(<App />, document.querySelector("#app"));
