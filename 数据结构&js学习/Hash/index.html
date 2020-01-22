@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HashTable</title>
+	<script src="HashTable.js"></script>
+	<script src="HashTableLine.js"></script>
+</head>
+<body>
+	
+	<script>
+		~function (HashTable) {
+			// var ht = new HashTable();
+			// ht.put('abcd',1234);
+			// ht.put('abcd',2345);
+			// ht.put('acbd',3456);
+			// ht.put('adcb',4567);
+			// console.log(ht.get('acbd'));
+			// ht.remove('acbd');
+			// console.log(ht.get('acdb',123));
+			// ht.print();
+			// console.log(ht.remove('aaaa'))
+
+			var htl = new HashTableLine();
+			htl.put('abcd', 123);
+			htl.put('abcd', 234);
+			htl.put('acbd', 345);
+			htl.put('adbc', 456);
+			htl.put('adbd', 678);
+			htl.put('a1', 678);
+			htl.put('a1', 123);
+			htl.put('1a', 23);
+			htl.put('abci','abci');
+			// htl.print();
+			
+			console.log(htl.get('a1','a1'));
+			console.log(htl.get('a1','a1'));
+			console.log(htl.get('acdb','acdb'));
+			console.log(htl.get('abcd','abcd'));
+			console.log(htl.loseloseHashCode('acdb'));
+
+			console.log(htl.remove('a1'));
+			console.log(htl.remove('abcd'));
+			console.log(htl.get('adbc','adbc'));
+			console.log(htl.remove('adbc'));
+			console.log(htl.get('abci','aaaaa'));
+			console.log(htl.remove('abci'));
+			console.log(htl.remove('abc'));
+			htl.print();
+			console.log(htl.size())
+		} (HashTable);	
+	</script>
+
+</body>
+</html>

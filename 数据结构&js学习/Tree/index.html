@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BinarySearchTree</title>
+	<script src="BinarySearchTree.js"></script>
+</head>
+<body>
+	<script>
+		~function (BinarySearchTree) {
+			var bst = new BinarySearchTree();
+			bst.insert(123);
+			bst.insert(35);
+			bst.insert(43);
+			bst.insert(146);
+			bst.insert(127);
+			// bst.print();
+
+			// console.log('中序遍历');
+			// bst.inOrderTraverse(function (ele) {
+			// 	console.log(ele);
+			// });
+
+			// console.log('先序遍历');
+			// bst.preOrderTraverse(function (ele) {
+			// 	console.log(ele);
+			// });
+
+			// console.log('后序遍历');
+			// bst.postOrderTraverse(function (ele) {
+			// 	console.log(ele);
+			// });
+			// console.log(bst.leftValue());
+			// console.log(bst.rightValue());
+			// console.log(bst.search(36));
+
+			bst.remove(123);
+			// bst.remove(35);
+			console.log('后序遍历');
+			bst.postOrderTraverse(function (ele) {
+				console.log(ele);
+			});
+			
+		} (BinarySearchTree);
+	</script>
+</body>
+</html>

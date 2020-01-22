@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Graph</title>
+	<script src="Dictionary.js"></script>
+	<script src="Queue.js"></script>
+	<script src="Stack.js"></script>
+	<script src="Graph.js"></script>
+</head>
+<body>
+	<script>
+		
+		~function (Dictionary, Queue, Stack, Graph) {
+			var graph = new Graph(Dictionary, Queue, Stack);
+			var myVertices = 
+			['A','B','C','D','E','F','G','H','I'];
+
+			for (var i = 0; i < myVertices.length; i++) {
+				graph.addVertex(myVertices[i]);
+			}
+
+			graph.addEdge('A', 'B');
+			graph.addEdge('A', 'C');
+			graph.addEdge('A', 'D');
+			graph.addEdge('C', 'D');
+			graph.addEdge('C', 'G');
+			graph.addEdge('D', 'G');
+			graph.addEdge('D', 'H');
+			graph.addEdge('B', 'E');
+			graph.addEdge('B', 'F');
+			graph.addEdge('E', 'I');
+
+			console.log(graph.toString());
+			console.log('广度优先搜索算法');
+			graph.bfs('A', function (v) {
+				console.log(v);
+			});
+
+			graph.shortPathV('B');
+
+			console.log(graph.BFS('A'));
+
+			console.log('深度优先搜索算法');
+			graph.dfs(function (v) {
+				console.log(v);
+			});
+
+			console.log(graph.DFS());
+		} (Dictionary, Queue, Stack, Graph);
+	</script>
+</body>
+</html>

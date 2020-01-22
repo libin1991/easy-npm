@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="ArrayBase.js"></script>
+       	<!-- 顺序排序 -->
+        <script src="SequentialSort.js"></script>
+        <!-- 冒泡排序 -->
+        <script src="BubbleSort.js"></script>
+        <!-- 插入排序 -->
+        <script src="InsertionSort.js"></script>
+        <!-- 归并排序 -->
+        <script src="MergeSort.js"></script>
+        <!-- 快速排序 -->
+        <script src="QuickSort.js"></script>
+
+    </head>
+    <body>
+    <script>
+    	~function () {
+    		var arr = new ArrayBase();
+    		arr.append(3);
+    		arr.append(1);
+    		arr.append(2);
+    		arr.append(5);
+    		arr.append(4);
+    		arr.append(9);
+    		arr.append(7);
+    		arr.append(6);
+    		arr.append(8);
+
+    		// arr.SeqSort();
+    		// arr.bubbleSort();
+    		// arr.insertionSort();
+    		// arr.mergeSort();
+    		arr.quickSort();
+    		console.log(arr.toString());
+    	}();
+    </script>
+    </body>
+</html>

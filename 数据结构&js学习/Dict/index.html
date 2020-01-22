@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dictionary</title>
+	<script src="Dictionary.js"></script>
+</head>
+<body>
+	<script>
+		~function (Dictionary) {
+			var dict = new Dictionary();
+			dict.print();
+			dict.set('name','linge');
+			dict.set('age','18');
+			dict.set('friend','xiaoyue');
+			dict.set('linge','zeling');
+			dict.print();
+			dict.remove('age');
+			dict.print();
+			console.log(dict.get('linge'));
+			dict.clear();
+			dict.print();
+		} (Dictionary);
+	</script>
+</body>
+</html>

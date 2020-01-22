@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Set</title>
+	<script src="Set.js"></script>
+</head>
+<body>
+	<script>
+		~function (Set) {
+			var set = new Set();
+			set.add(1);
+			set.add(2);
+			set.add(3);
+			set.remove(1);
+			console.log(set.size());
+			// set.clear();
+			// console.log(set);
+			// set.add({a:1});
+			// set.add({b:2});
+			console.log(set.values())
+
+
+			var set1 = new Set();
+			set1.add(1);
+			set1.add(3);
+			set1.add(6);
+			set1.add(2);
+			set1.add(8);
+			// console.log(set.union(set1));
+			console.log(set.intersection(set1));
+		} (Set);
+
+	</script>
+</body>
+</html>
