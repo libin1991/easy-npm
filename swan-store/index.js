@@ -161,11 +161,11 @@ export default class Store {
                     return;
                 };
                 fn && fn(newVal);
-                page.nextTick(() => {
+                setTimeout(() => {
                     if (that.subs.length) {
                         that.subs.forEach(sub => sub());
                     }
-                });
+                }, 0);
                 val = newVal;
             }
         });
