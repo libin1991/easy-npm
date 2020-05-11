@@ -70,7 +70,21 @@ nrm test npm
 npm login
 npm publish
 ```
-下载正式版本
+
+> 更新操作
+```
+npm version patch // 这个操作会在原先的版本号上+1
+npm publish // 重新发布
+```
+执行成功后会在主页看到一个新发布的版本包
+
+> 删除操作
+删除指定的包和版本号
+```
+npm unpublish 包名@版本号
+```
+
+> 下载正式版本
 ```
 npm install @packageName
 ```
