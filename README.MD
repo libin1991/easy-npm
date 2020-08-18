@@ -141,6 +141,9 @@ $ npm info bootstrap versions
   '4.0.0' ]
 $ npm install --save bootstrap@3.3.7
 
+npm info libin version   // 查看最新的版本
+npm info libin versions  // 查看所有的版本
+npm view libin      
 
 ```
 
